@@ -20,7 +20,7 @@ body{
     top: 100px;
     left: 500px;
     width: 30%;
-    height: 90%;
+    height: 100%;
     background-image: radial-gradient(#6b72ff00 50%,#151fea 80%);
     box-shadow: 0 0 50px rgb(25, 0, 255),inset 0 0 rgb(25, 0, 255);
     border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
@@ -34,7 +34,7 @@ body{
     top: 100px;
     left: 500px;
     width: 30%;
-    height: 90%;
+    height: 100%;
     background-image: radial-gradient(#6b72ff00 50%,#1e1eecfa 80%);
     box-shadow: 0 0 50px rgb(25, 0, 255),inset 0 0 rgb(25, 0, 255);
     border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
@@ -47,7 +47,7 @@ body{
     top: 100px;
     left: 500px;
     width: 30%;
-    height: 90%;
+    height: 100%;
     background-image: radial-gradient(#6b72ff00 50%,#1117ca 80%);
     box-shadow: 0 0 50px rgb(25, 0, 255),inset 0 0 rgb(25, 0, 255);
     border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
