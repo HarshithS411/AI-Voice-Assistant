@@ -1,6 +1,8 @@
 from playsound import playsound
+import eel
 
 # Playing assistant sound function
-def playAssistantsound():
-    music_dir = "C:\\Users\\BLESSTO\\OneDrive\\Documents\\AI-Voice-Assistant\\www\\assets\\www_assets_audio_start_sound.mp3"
+@eel.expose
+def play_assistant_sound():
+    music_dir = "www//assets//www_assets_audio_start_sound.mp3"  # Use forward slashes
     playsound(music_dir)
