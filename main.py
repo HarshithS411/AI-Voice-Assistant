@@ -4,7 +4,7 @@ from playsound import playsound
 
 # Define the function to play the assistant sound
 def play_assistant_sound():
-    music_dir = "www//assets//www_assets_audio_start_sound.mp3"
+    music_dir = "www/assets/www_assets_audio_start_sound.mp3"
     playsound(music_dir)
 
 # Initialize eel and play the sound
