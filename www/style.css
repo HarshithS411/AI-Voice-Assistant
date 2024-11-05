@@ -17,8 +17,8 @@ body{
 
 .square span:nth-child(1){
     position: absolute;
-    top: 100px;
-    left: 500px;
+    top: 10px;
+    left: 350px;
     width: 30%;
     height: 100%;
     background-image: radial-gradient(#6b72ff00 50%,#151fea 80%);
@@ -31,8 +31,8 @@ body{
 
 .square span:nth-child(2){
     position: absolute;
-    top: 100px;
-    left: 500px;
+    top: 10px;
+    left: 350px;
     width: 30%;
     height: 100%;
     background-image: radial-gradient(#6b72ff00 50%,#1e1eecfa 80%);
@@ -44,8 +44,8 @@ body{
 
 .square span:nth-child(3){
     position: absolute;
-    top: 100px;
-    left: 500px;
+    top: 10px;
+    left: 350px;
     width: 30%;
     height: 100%;
     background-image: radial-gradient(#6b72ff00 50%,#1117ca 80%);

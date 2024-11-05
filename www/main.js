@@ -12,4 +12,38 @@ $(document).ready(function () {
 
     });
 
+    // siri configuration
+    var siriWave = new SiriWave({
+        container: document.getElementById("siri-container"),
+        width: 800,
+        height: 300,
+        style:"ios9",
+        amplitude:"1",
+        speed:"0.30",
+        autostart:true
+      });
+
+      // siri message animation
+      $('.siri-message').textillate({
+        loop: true,
+        sync: true,
+        in: {
+            effect: "fadeInUp",
+            sync:true,
+        },
+        out: {
+            effect: "fadeOutUp",
+            sync:true,
+        },
+
+    });
+
+     // mic button click event
+
+     $("#MicBtn").click(function () {
+        eel.play_assistant_sound() // Corrected function call with eel prefix
+        $("#oval").attr("hidden", true);
+        $("#SiriWave").attr("hidden", false);
+    });
+    
 });
