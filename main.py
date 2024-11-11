@@ -1,7 +1,7 @@
 import os
 import eel
 from playsound import playsound
-
+from engine.command import *
 # Define the function to play the assistant sound
 def play_assistant_sound():
     music_dir = "www/assets/www_assets_audio_start_sound.mp3"

@@ -44,6 +44,12 @@ $(document).ready(function () {
         // Corrected function call with eel prefix
         $("#oval").attr("hidden", true);
         $("#SiriWave").attr("hidden", false);
+        eel.takecommand()()
     });
-    
+    eel.expose(DisplayMessage);
+function DisplayMessage(message) {
+    console.log(message);
+    // Any other display logic
+}
+
 });
