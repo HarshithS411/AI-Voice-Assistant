@@ -13,3 +13,4 @@ play_assistant_sound()
 
 # Start the eel application with Microsoft Edge as the browser
 eel.start('index.html', mode='edge', host='localhost', block=True)
+    

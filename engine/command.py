@@ -36,7 +36,7 @@ def takecommand():
         eel.DisplayMessage('Recognizing...')  # Display message on the frontend
         query = r.recognize_google(audio, language='en-in')
         print(f"User said: {query}")
-        eel.DisplayMessage(query)  # Display recognized text on the frontend
+        eel.DisplayMessage(query)  # Display recognized text on the frontendv
         speak(query)
     except sr.UnknownValueError:
         eel.DisplayMessage("Could not understand audio.")
