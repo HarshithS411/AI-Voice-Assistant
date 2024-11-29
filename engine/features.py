@@ -1,6 +1,11 @@
 from playsound import playsound
+import eel
 
-# Playing assistant sound function
-def play_assistant_sound():
-    music_dir = "www/assets/www_assets_audio_start_sound.mp3"  # Use forward slashes
+# Playing assiatnt sound function
+
+@eel.expose
+def playAssistantSound():
+    music_dir = "www\\assets\\audio\\start_sound.mp3"
     playsound(music_dir)
+
+    
