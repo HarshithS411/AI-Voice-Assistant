@@ -3,6 +3,7 @@ import sqlite3
 con =sqlite3.connect("jarvis.db") 
 cursor =con.cursor()
 
+# for inserting inbuilt apps 
 # query="CREATE TABLE IF NOT EXISTS sys_command(id integer primary key,name varchar(100),path varchar(1000))"
 # cursor.execute(query)
 
@@ -10,6 +11,7 @@ cursor =con.cursor()
 # cursor.execute(query)
 # con.commit()
 
+# for web apps
 # query="CREATE TABLE IF NOT EXISTS web_command(id integer primary key,name varchar(100),url varchar(1000))"
 # cursor.execute(query)
 
