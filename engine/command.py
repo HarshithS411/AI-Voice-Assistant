@@ -38,32 +38,40 @@ def takecommand():
     return query.lower()
 
 @eel.expose
-def allCommands():
+def allCommands(message=1):
 
-    try:
+    if message == 1:
         query = takecommand()
         print(query)
+    else:
+        query = message
+
+    try:
 
         if "open" in query:
             from engine.features import openCommand
             openCommand(query)
-        elif "on youtube"in query:
+        elif "on youtube" in query:
             from engine.features import PlayYoutube
             PlayYoutube(query)
-        elif "send message " in query or "phone call" in query or "video call" in query:
-            from engine.features import findContact,whatsapp
-            flag=""
-            contact_no,name=findContact(query)
-            if(contact_no !=0):
+        
+        elif "send message" in query or "phone call" in query or "video call" in query:
+            from engine.features import findContact, whatsApp
+            flag = ""
+            contact_no, name = findContact(query)
+            if(contact_no != 0):
+
                 if "send message" in query:
-                    flag ='message'
-                    speak("what message to send")   
-                    query=takecommand() 
+                    flag = 'message'
+                    speak("what message to send")
+                    query = takecommand()
+                    
                 elif "phone call" in query:
-                    flag='call'
+                    flag = 'call'
                 else:
-                    flag='video call'
-                whatsapp(contact_no,query,flag,name)
+                    flag = 'video call'
+                    
+                whatsApp(contact_no, query, flag, name)
         else:
             print("not run")
     except:

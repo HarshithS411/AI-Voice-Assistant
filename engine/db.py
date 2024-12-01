@@ -43,20 +43,21 @@ cursor =con.cursor()
 
 # Specify the column indices you want to import (0-based index)
 # example importing the 1st and 3rd columns
-desired_columns_indices=[0,18]
+# desired_columns_indices=[0,18]
 
-# read data from CSV and insert into SQLITE table from desierd column
-with open('contacts.csv','r',encoding='utf-8')as csvfile:
-    csvreader =csv.reader(csvfile)
-    for row in csvreader:
-        selected_data=[row[i] for i in desired_columns_indices]
-        cursor.execute('''insert into contacts (id,'name','mobile_no') values(null,?,?);''',tuple(selected_data)) 
+# # read data from CSV and insert into SQLITE table from desierd column
+# with open('contacts.csv','r',encoding='utf-8')as csvfile:
+#     csvreader =csv.reader(csvfile)
+#     for row in csvreader:
+#         selected_data=[row[i] for i in desired_columns_indices]
+#         cursor.execute('''insert into contacts (id,'name','mobile_no') values(null,?,?);''',tuple(selected_data)) 
 
-# commit changes and close connection
-con.commit()
-con.close
+# # commit changes and close connection
+# con.commit()
+# con.close
 
 
+# to add each contacts into 
 # query="insert into contacts values(null,'kishore','9535235174',null)"
 # cursor.execute(query)
 # con.commit()
@@ -66,8 +67,7 @@ con.close
 
 # # Execute the query with properly formatted parameters
 # cursor.execute(
-#     "SELECT mobile_no FROM contacts WHERE lower(name) LIKE ? OR lower(name) LIKE ?", 
-#     ('%' + query + '%', '%' + query + '%')
+#     "SELECT mobile_no FROM contacts WHERE lower(name) LIKE ? OR lower(name) LIKE ?",  ('%' + query + '%', '%' + query + '%')
 # )
 
 # # Fetch and print the results

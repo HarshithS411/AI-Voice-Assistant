@@ -1,4 +1,5 @@
 import os
+from pipes import quote
 import re
 import sqlite3
 import struct
@@ -15,9 +16,7 @@ from engine.config import ASSISTANT_NAME
 import pywhatkit as kit
 import pvporcupine
 
-
 from engine.helper import extract_yt_term, remove_words
-from pipes import quote
 
 con = sqlite3.connect("jarvis.db")
 cursor = con.cursor()
@@ -27,12 +26,12 @@ def playAssistantSound():
     music_dir = "www\\assets\\audio\\start_sound.mp3"
     playsound(music_dir)
 
-
+    
 def openCommand(query):
     query = query.replace(ASSISTANT_NAME, "")
     query = query.replace("open", "")
     query.lower()
-#kishore 
+
     app_name = query.strip()
 
     if app_name != "":
@@ -112,19 +111,19 @@ def hotword():
 
 
 
-# find contact kishore
+# find contacts
 def findContact(query):
-    
     
     words_to_remove = [ASSISTANT_NAME, 'make', 'a', 'to', 'phone', 'call', 'send', 'message', 'wahtsapp', 'video']
     query = remove_words(query, words_to_remove)
 
     try:
         query = query.strip().lower()
-        cursor.execute("SELECT mobile_no FROM contacts WHERE LOWER(name) LIKE ? OR LOWER(name) LIKE ?", ('%' + query + '%',+ query + '%'))
+        cursor.execute("SELECT mobile_no FROM contacts WHERE LOWER(name) LIKE ? OR LOWER(name) LIKE ?", ('%' + query + '%', query + '%'))
         results = cursor.fetchall()
         print(results[0][0])
         mobile_number_str = str(results[0][0])
+
         if not mobile_number_str.startswith('+91'):
             mobile_number_str = '+91' + mobile_number_str
 
@@ -133,36 +132,42 @@ def findContact(query):
         speak('not exist in contacts')
         return 0, 0
     
-# kishore
-def whatsapp(mobile_no, message,flag,name):
+def whatsApp(mobile_no, message, flag, name):
+    
+
     if flag == 'message':
         target_tab = 12
-        jarvis_message ="message send successfully to " +name
-    elif flag == 'call':
-        target_tab=7
-        message=''
-        jarvis_message ="calling to "+name
-    else:
-        target_tab=6
-        message=''
-        jarvis_message="starting video call with "+name
-    # encode the message for url
-    encoded_message =quote(message)
+        jarvis_message = "message send successfully to "+name
 
-    # construct the url
+    elif flag == 'call':
+        target_tab = 7
+        message = ''
+        jarvis_message = "calling to "+name
+
+    else:
+        target_tab = 6
+        message = ''
+        jarvis_message = "staring video call with "+name
+
+
+    # Encode the message for URL
+    encoded_message = quote(message)
+    print(encoded_message)
+    # Construct the URL
     whatsapp_url = f"whatsapp://send?phone={mobile_no}&text={encoded_message}"
 
-    # construct full command
-    full_command =f'start "" "{whatsapp_url}"'
+    # Construct the full command
+    full_command = f'start "" "{whatsapp_url}"'
 
-    # open whatsapp with the constructed URL using cmd.exe
-    subprocess.run(full_command,shell=True)
+    # Open WhatsApp with the constructed URL using cmd.exe
+    subprocess.run(full_command, shell=True)
     time.sleep(5)
-    subprocess.run(full_command,shell=True)
+    subprocess.run(full_command, shell=True)
+    
+    pyautogui.hotkey('ctrl', 'f')
 
-    pyautogui.hotkey('ctrl','f')
-
-    for i in range(1,target_tab):
+    for i in range(1, target_tab):
         pyautogui.hotkey('tab')
+
     pyautogui.hotkey('enter')
     speak(jarvis_message)
