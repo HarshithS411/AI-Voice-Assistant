@@ -33,11 +33,16 @@ cursor =con.cursor()
 
 # cursor.execute('drop table contacts')
 
+
+
 # create a table with the desired colums
 # cursor.execute('''Create table if not exists contacts (id integer primary key ,name varchar(255),mobile_no varchar(255),email varchar(255) null)''')
 
+
+
+
 # Specify the column indices you want to import (0-based index)
-#example importing the 1st and 3rd columns
+# example importing the 1st and 3rd columns
 desired_columns_indices=[0,18]
 
 # read data from CSV and insert into SQLITE table from desierd column
@@ -50,3 +55,22 @@ with open('contacts.csv','r',encoding='utf-8')as csvfile:
 # commit changes and close connection
 con.commit()
 con.close
+
+
+# query="insert into contacts values(null,'kishore','9535235174',null)"
+# cursor.execute(query)
+# con.commit()
+
+# query = 'kishore'
+# query = query.strip().lower()
+
+# # Execute the query with properly formatted parameters
+# cursor.execute(
+#     "SELECT mobile_no FROM contacts WHERE lower(name) LIKE ? OR lower(name) LIKE ?", 
+#     ('%' + query + '%', '%' + query + '%')
+# )
+
+# # Fetch and print the results
+# results = cursor.fetchall()
+# print(results[0][0])  # Print the first result
+
