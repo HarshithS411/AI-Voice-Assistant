@@ -1,4 +1,5 @@
 import sqlite3
+import csv
 
 con =sqlite3.connect("jarvis.db") 
 cursor =con.cursor()
@@ -25,8 +26,27 @@ cursor =con.cursor()
 # con.commit()
 
 #testing module
-app_name = "Android Studio"
-cursor.execute('select path from sys_command where name IN(?)',(app_name,))
-results=cursor.fetchall()
-print(results)
+# app_name = "Android Studio"
+# cursor.execute('select path from sys_command where name IN(?)',(app_name,))
+# results=cursor.fetchall()
+# print(results)
 
+# cursor.execute('drop table contacts')
+
+# create a table with the desired colums
+# cursor.execute('''Create table if not exists contacts (id integer primary key ,name varchar(255),mobile_no varchar(255),email varchar(255) null)''')
+
+# Specify the column indices you want to import (0-based index)
+#example importing the 1st and 3rd columns
+desired_columns_indices=[0,18]
+
+# read data from CSV and insert into SQLITE table from desierd column
+with open('contacts.csv','r',encoding='utf-8')as csvfile:
+    csvreader =csv.reader(csvfile)
+    for row in csvreader:
+        selected_data=[row[i] for i in desired_columns_indices]
+        cursor.execute('''insert into contacts (id,'name','mobile_no') values(null,?,?);''',tuple(selected_data)) 
+
+# commit changes and close connection
+con.commit()
+con.close
