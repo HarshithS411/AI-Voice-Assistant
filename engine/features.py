@@ -1,5 +1,5 @@
 import os
-from pipes import quote
+from urllib.parse import quote
 import re
 import sqlite3
 import struct
@@ -31,8 +31,7 @@ def playAssistantSound():
 def openCommand(query):
     query = query.replace(ASSISTANT_NAME, "")
     query = query.replace("open", "")
-    query.lower()
-
+    query = query.lower()
     app_name = query.strip()
 
     if app_name != "":
