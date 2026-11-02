@@ -1,6 +1,5 @@
 import os
 from urllib.parse import quote
-import re
 import sqlite3
 import struct
 import subprocess
